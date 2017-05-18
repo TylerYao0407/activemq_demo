@@ -1,4 +1,4 @@
-package com.tyler.activemq;
+package com.tyler.demo;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.slf4j.Logger;
@@ -29,12 +29,12 @@ public class ProducerApp {
         Session session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
         //创建队列
-        Destination dest = session.createQueue(SUBJECT);
+        Queue queue = session.createQueue(SUBJECT);
         //createTopic方法用来创建Topic
         //session.createTopic("TOPIC");
 
         //通过session可以创建消息的生产者
-        MessageProducer producer = session.createProducer(dest);
+        MessageProducer producer = session.createProducer(queue);
         for (int i=0;i<100;i++) {
             //初始化一个mq消息
             TextMessage message = session.createTextMessage("hello active mq 中文" + i);

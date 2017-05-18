@@ -15,9 +15,9 @@ public class ConsumerPoolApp implements MessageListener {
 
     public static void main(String[] args) throws JMSException {
         //创建mq连接
-        Connection conn = ActiveMQPoolsUtil.getConnection();
+        Connection conn = ActiveMQPoolsUtil.getConnection("192.168.6.194","61616","admin","admin");
         //启动连接
-        conn.start();
+//        conn.start();
 
         //创建会话
         Session session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);

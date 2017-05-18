@@ -1,4 +1,4 @@
-package com.tyler.activemq;
+package com.tyler.demo;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.slf4j.Logger;
@@ -30,9 +30,9 @@ public class ConsumerApp implements MessageListener {
         Session session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
         //通过会话创建目标
-        Destination dest = session.createQueue(SUBJECT);
+        Queue queue = session.createQueue(SUBJECT);
         //创建mq消息的消费者
-        MessageConsumer consumer = session.createConsumer(dest);
+        MessageConsumer consumer = session.createConsumer(queue);
 
         //初始化MessageListener
         ConsumerApp me = new ConsumerApp();
